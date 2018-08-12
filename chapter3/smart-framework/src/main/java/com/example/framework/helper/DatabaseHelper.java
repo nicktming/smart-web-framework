@@ -242,7 +242,7 @@ public final class DatabaseHelper {
 
     private static String getTableName(Class<?> entityClass) {
         String className = entityClass.getSimpleName();
-        System.out.println("className : " + className);
+        //System.out.println("className : " + className);
         return className;
     }
 }

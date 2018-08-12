@@ -10,10 +10,10 @@ import com.example.framework.bean.Param;
 import com.example.framework.bean.View;
 
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class CustomerController {
+
     @Inject
     private CustomerService customerService;
 
@@ -30,11 +30,12 @@ public class CustomerController {
         return new View("customer_show.jsp").addModel("customer", customer);
     }
 
-    @Action("delete:/customer_delete")
-    public Data delete(Param param) {
+    @Action("get:/customer_delete")
+    public View delete(Param param) {
         long id = param.getLong("id");
         boolean result = customerService.deleteCustomer(id);
-        return new Data(result);
+        //return new Data(result);
+        return new View("/customer");
     }
 
 }

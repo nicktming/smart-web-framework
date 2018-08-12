@@ -45,6 +45,7 @@ public final class ClassUtil {
                 URL url = urls.nextElement();
                 if (url != null) {
                     String protocol = url.getProtocol();
+                    //System.out.println("path:" + url.getPath() + ", " + url.getProtocol());
                     if (protocol.equals("file")) {
                         String packagePath = url.getPath().replaceAll("%20", " ");
                         addClass(classSet, packagePath, packageName);
@@ -75,6 +76,7 @@ public final class ClassUtil {
     }
 
     private static void addClass(Set<Class<?>> classSet, String packagePath, String packageName) {
+        //System.out.println("invoke packagePath :" + packagePath + ", packageName:" + packageName);
         File[] files = new File(packagePath).listFiles(new FileFilter() {
             public boolean accept(File file) {
                 return (file.isFile() && file.getName().endsWith(".class")) || file.isDirectory();
@@ -82,6 +84,7 @@ public final class ClassUtil {
         });
         for (File file : files) {
             String fileName = file.getName();
+            //System.out.println("fileName:" + fileName);
             if (file.isFile()) {
                 String className = fileName.substring(0, fileName.lastIndexOf("."));
                 if (StringUtil.isNotEmpty(packageName)) {
@@ -91,7 +94,7 @@ public final class ClassUtil {
             } else {
                 String subPackagePath = fileName;
                 if (StringUtil.isNotEmpty(packagePath)) {
-                    subPackagePath = packagePath + "/" + subPackagePath;
+                    subPackagePath = packagePath + subPackagePath + "/";
                 }
                 String subPackageName = fileName;
                 if (StringUtil.isNotEmpty(packageName)) {
