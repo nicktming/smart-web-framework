@@ -21,12 +21,14 @@ public final class PropsUtil {
         Properties props = null;
         InputStream is = null;
         try {
+            //System.out.println("in propsutil:" + fileName);
             is = Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName);
             if (is == null) {
                 throw new FileNotFoundException(fileName + " file is not found");
             }
             props = new Properties();
             props.load(is);
+            //System.out.println("props: " + props);
         } catch (IOException e) {
             LOGGER.error("load properties file failure", e);
         } finally {

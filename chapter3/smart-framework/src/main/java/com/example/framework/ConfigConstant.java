@@ -2,6 +2,7 @@ package com.example.framework;
 
 public interface ConfigConstant {
     String CONFIF_FILE = "smart.properties";
+
     String JDBC_DRIVER = "smart.framework.jdbc.driver";
     String JDBC_URL = "smart.framework.jdbc.url";
     String JDBC_USERNAME = "smart.framework.jdbc.username";

@@ -28,6 +28,7 @@ import java.util.Map;
 public class DispatcherServlet extends HttpServlet {
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
+//System.out.println("before init...");
         HelperLoader.init();
         ServletContext servletContext = servletConfig.getServletContext();
         ServletRegistration jspServlet = servletContext.getServletRegistration("jsp");
@@ -40,7 +41,7 @@ public class DispatcherServlet extends HttpServlet {
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String requestMethod = request.getMethod().toLowerCase();
         String requestPath = request.getPathInfo();
-
+//System.out.println("in service: method:" + requestMethod + ", requestPath:" + requestPath);
         Handler handler = ControllerHelper.getHandler(requestMethod, requestPath);
         if (handler != null) {
             Class<?> controllerClass = handler.getControllerClass();
