@@ -1,0 +1,19 @@
+@startuml
+
+interface Hello {
+    void say()
+}
+
+class HelloImpl implements Hello {
+
+}
+
+class HelloProxy implements Hello {
+    void before()
+    void after()
+}
+
+HelloProxy *-- "1" Hello
+
+
+@enduml
